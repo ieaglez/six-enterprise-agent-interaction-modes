@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Six Human-Agent Interaction Patterns for Enterprise Agent Systems</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1e40af 100%);color:#fff;padding:80px 24px 60px;text-align:center}
+.hero h1{font-size:2.4rem;font-weight:700;max-width:720px;margin:0 auto 16px;line-height:1.3}
+.hero p{font-size:1.1rem;opacity:0.85;max-width:600px;margin:0 auto 32px}
+.hero .author{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.1);border-radius:40px;padding:8px 20px 8px 8px;font-size:0.9rem}
+.hero .author img{width:36px;height:36px;border-radius:50%;background:#3b82f6}
+.hero .author a{color:#93c5fd;text-decoration:none}
+.hero .author a:hover{text-decoration:underline}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+.intro{padding:48px 0 32px;text-align:center}
+.intro p{font-size:1.05rem;color:#475569;max-width:700px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:0 0 64px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;transition:all 0.2s ease;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);border-color:#93c5fd}
+.card .preview{height:180px;background:#f1f5f9;overflow:hidden;position:relative;border-bottom:1px solid #e2e8f0}
+.card .preview iframe{width:200%;height:200%;transform:scale(0.5);transform-origin:top left;pointer-events:none;border:none}
+.card .info{padding:20px}
+.card .number{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#eff6ff;color:#2563eb;font-size:0.8rem;font-weight:700;margin-bottom:10px}
+.card h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;color:#0f172a}
+.card .desc{font-size:0.85rem;color:#64748b;line-height:1.5}
+.card .metaphor{font-size:0.8rem;color:#2563eb;margin-top:10px;font-weight:500}
+.footer{text-align:center;padding:40px 24px;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:0.85rem}
+.footer a{color:#3b82f6;text-decoration:none}
+.badge{display:inline-block;background:#eff6ff;color:#2563eb;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:500;margin-bottom:16px}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.hero{padding:48px 16px 40px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Interactive Prototypes</div>
+  <h1>Six Human-Agent Interaction Patterns for Enterprise Agent Systems</h1>
+  <p>Beyond the chat window — how humans and AI agents actually collaborate in real enterprise workflows.</p>
+  <div class="author">
+    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">JZ</div>
+    <span>Jeff Zhang · <a href="https://www.linkedin.com/in/eaglez/" target="_blank">LinkedIn Article →</a></span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="intro">
+    <p>When AI Agents move from consumer chat interfaces into real enterprise operations, "conversation" becomes just one of six distinct interaction patterns — and often not the most frequent one. Click any card below to explore the interactive prototype.</p>
+  </div>
+
+  <div class="grid">
+
+    <a class="card" href="prototypes/01_home.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/01_home.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">0</div>
+        <h3>Home — Agent Ops Hub</h3>
+        <div class="desc">The central command center where operators monitor all agent activities, review pending tasks, and access the unified workspace.</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/02_supervisory.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/02_supervisory.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">1</div>
+        <h3>Supervisory — Real-Time Monitoring</h3>
+        <div class="desc">Watch agents work in real time. The human sets boundaries and intervenes only on exceptions — like an air traffic controller managing autonomous flights.</div>
+        <div class="metaphor">🗼 Metaphor: Air Traffic Control Tower</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/03_adjudicative.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/03_adjudicative.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">2</div>
+        <h3>Adjudicative — Structured Case Review</h3>
+        <div class="desc">Agent presents evidence and reasoning; the human renders the final judgment. Structured, auditable, compliant — the judicial bench of AI operations.</div>
+        <div class="metaphor">⚖️ Metaphor: Judge Reviewing a Case Brief</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/04_calibrative.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/04_calibrative.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">3</div>
+        <h3>Calibrative — Feedback & Correction</h3>
+        <div class="desc">When the agent gets it wrong, the human doesn't just override — they teach. Every correction becomes training data that improves future performance.</div>
+        <div class="metaphor">🎓 Metaphor: Mentoring an Intern</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/05_strategic.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/05_strategic.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">4</div>
+        <h3>Strategic — Policy & Configuration</h3>
+        <div class="desc">Humans define the rules of the game; agents execute within those boundaries. Adjust signal weights, thresholds, and strategies — then backtest before deploying.</div>
+        <div class="metaphor">📜 Metaphor: Legislator Drafting Law</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/06_exploratory.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/06_exploratory.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">5</div>
+        <h3>Exploratory — Conversational Investigation</h3>
+        <div class="desc">The classic "chat with AI" — but purpose-built for investigation. Human and agent co-explore open-ended problems through multi-turn dialogue.</div>
+        <div class="metaphor">🔍 Metaphor: Detective & Partner</div>
+      </div>
+    </a>
+
+    <a class="card" href="prototypes/07_retrospective.html" target="_blank">
+      <div class="preview"><iframe src="prototypes/07_retrospective.html" loading="lazy"></iframe></div>
+      <div class="info">
+        <div class="number">6</div>
+        <h3>Retrospective — Performance Review</h3>
+        <div class="desc">Periodic review of agent performance at scale — accuracy, cost, drift, and skill health. The performance review cycle that keeps the system trustworthy.</div>
+        <div class="metaphor">📊 Metaphor: Quarterly Performance Review</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>Built by <a href="https://www.linkedin.com/in/eaglez/" target="_blank">Jeff Zhang</a> · Companion prototypes for the LinkedIn article: <em>Six Human-Agent Interaction Patterns for Enterprise Agent Systems</em></p>
+  <p style="margin-top:8px">© 2026 · Open-sourced for the enterprise AI community</p>
+</div>
+
+</body>
+</html>

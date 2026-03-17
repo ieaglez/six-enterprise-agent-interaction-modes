@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1280">
+<title>AgentOps — Investigation Workbench</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f0;display:flex;justify-content:center;padding:20px}
+.shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:720px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0}
+.side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
+.side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none}
+.side nav a:hover{background:#f5f5f0}
+.side nav a.act{color:#2563eb;font-weight:500;background:#eff6ff}
+.main{flex:1;display:flex;overflow:hidden}
+.chat-col{flex:1;display:flex;flex-direction:column}
+.chat-hdr{padding:14px 20px;border-bottom:1px solid #e5e5e0;display:flex;align-items:center;gap:10px}
+.chat-hdr h2{font-size:14px;font-weight:500;flex:1}
+.tag{font-size:10px;padding:2px 8px;border-radius:4px;background:#f5f5f0;color:#888}
+.msgs{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px;background:#fafaf7}
+.msg{display:flex;gap:10px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.avatar.u{background:#dbeafe;color:#1e40af}
+.avatar.a{background:#eff6ff;color:#2563eb}
+.bubble{max-width:80%;font-size:13px;line-height:1.6;background:#fff;border:1px solid #e5e5e0;padding:12px 16px}
+.msg.user .bubble{border-radius:12px 12px 0 12px}
+.msg.agent .bubble{border-radius:12px 12px 12px 0}
+.tool-call{background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:6px 10px;margin:6px 0;font-size:11px;font-family:'SF Mono',Monaco,monospace;color:#1e40af}
+table{width:100%;font-size:11px;border-collapse:collapse;margin:8px 0}
+th{text-align:left;padding:4px 8px;background:#f5f5f0;font-weight:500;font-size:10px;color:#888}
+td{padding:4px 8px;border-bottom:1px solid #f5f5f0}
+tr.hl{background:#eff6ff}
+.input-bar{padding:12px 20px;border-top:1px solid #e5e5e0;display:flex;align-items:center;gap:10px;background:#fff}
+.input-bar input{flex:1;border:1px solid #e5e5e0;border-radius:8px;padding:10px 14px;font-size:13px;outline:none;font-family:inherit}
+.send-btn{width:36px;height:36px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.evidence-panel{width:280px;border-left:1px solid #e5e5e0;padding:16px;overflow-y:auto}
+.evidence-panel h3{font-size:13px;font-weight:500;margin-bottom:12px}
+.ev-item{padding:8px 10px;border:1px solid #e5e5e0;border-radius:8px;margin-bottom:8px;font-size:11px;cursor:pointer}
+.ev-item:hover{background:#fafaf7}
+.ev-type{font-size:9px;font-weight:500;padding:1px 6px;border-radius:3px;margin-bottom:4px;display:inline-block}
+.ev-strong{background:#eff6ff;color:#1e40af}
+.ev-support{background:#dbeafe;color:#1e40af}
+.ev-text{color:#888;line-height:1.4;margin-top:4px}
+.btn-sm{display:block;width:100%;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #ddd;background:#fff;color:#1a1a1a;text-align:center;margin-top:6px}
+.btn-sm.primary{background:#2563eb;color:#fff;border:none}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="side">
+    <div class="logo"><div class="icon">⚡</div><div>AgentOps<span class="sub">Enterprise</span></div></div>
+    <nav><a href="#">New thread</a><a href="#">Dashboard</a><a href="#">Cases</a><a href="#">Skills</a><a class="act" href="#">Investigate</a><a href="#">Reports</a><a href="#">Knowledge base</a></nav>
+  </div>
+  <div class="chat-col">
+    <div class="chat-hdr"><h2>Investigation: Linked vendor account analysis</h2><span class="tag">Active | 12 min</span><span class="tag">Risk Analysis Agent</span></div>
+    <div class="msgs">
+      <div class="msg user"><div class="avatar u">Alex Chen</div><div class="bubble">These 7 vendors have different incorporation dates and locations, but I suspect they share the same beneficial owner. Can you pull registration details for comparison?</div></div>
+      <div class="msg agent"><div class="avatar a">⚡</div><div class="bubble">
+        <div class="tool-call">query_vendor_profile × 7 vendors</div>
+        Registration comparison:
+        <table>
+         <dtr><th>Dimension</th><th>Result</th></tr>
+         <dtr><td>Registered names</td><td>7 different corporate names</td></tr>
+         <dtr class="hl"><td>Contact numbers</td><td>5 unique numbers, 3 share region office</td></tr>
+         <dtr class="hl"><td>License dates</td><td>All within Nov 1-8, 2025</td></tr>
+         <dtr class="hl"><td>Vendor created</td><td>All around Nov 15, 2025</td></tr>
+         <dtr><td>Bank accounts</td><td>Requires Finance Team access</td></tr>
+        </table>
+        Registration dates are clustered. Three phone numbers share same region office — possible coordination signal.
+      </div></div>
+      <div class="msg user"><div class="avatar u">Alex Chen</div><div class="bubble">Interesting pattern. Can you analyze their communication with our procurement team — terminology patterns, response timing, common phrases?</div></div>
+      <div class="msg agent"><div class="avatar a">⚡</div><div class="bubble">
+        <div class="tool-call">analyze_communication_patterns</div>
+        <table>
+         <dtr><th>Metric</th><th>5 vendors (cluster A)</th><th>2 vendors (cluster B)</th></tr>
+         <dtr class="hl"><td>Language similarity</td><td>Cosine 0.87</td><td>Cosine 0.31</td></tr>
+         <dtr class="hl"><td>Response hours</td><td>Mon-Fri 09:00-18:00</td><td>Variable</td></tr>
+         <dtr><td>Weekend activity</td><td>Zero responses</td><td>Active</td></tr>
+        </table>
+        5 of 7 vendors show nearly identical communication patterns. The remaining 2 appear independently operated. The 5-vendor cluster provides strong evidence of unified control.
+      </div></div>
+      <div class="msg user"><div class="avatar u">Alex Chen</div><div class="bubble">Good. These 5 appear controlled by one entity. Package the evidence chain and create a High risk case.</div></div>
+      <div class="msg agent"><div class="avatar a">⚡</div><div class="bubble">
+        <div class="tool-call">create_risk_alert → CASE-2026-0312-NA-1923</div>
+        Case created with recommended actions:<br>
+        1. Link 5 vendors as single entity<br>
+        2. Consolidate violation history (recidivist treatment)<br>
+        3. Escalate to Compliance Team for financial investigation<br><br>
+        <span style="font-size:11px;color:#999">Awaiting your confirmation to publish →</span>
+      </div></div>
+    </div>
+    <div class="input-bar">
+      <input type="text" placeholder="Continue investigation..." />
+      <div class="send-btn"><svg width="14" height="14" fill="#fff" viewBox="0 0 24 24" style="transform:rotate(45deg)"><path d="M5 12l14-7-7 7 7 7z"/></svg></div>
+    </div>
+  </div>
+  <div class="evidence-panel">
+    <h3>Evidence collector</h3>
+    <div style="font-size:10px;color:#999;margin-bottom:12px">Auto-captured from this investigation</div>
+    <div class="ev-item"><div class="ev-type ev-strong">Strong</div><div class="ev-text">Communication pattern cosine similarity 0.87 across 5 vendors</div></div>
+    <div class="ev-item"><div class="ev-type ev-strong">Strong</div><div class="ev-text">License registration dates within 7-day window (all 7 vendors)</div></div>
+    <div class="ev-item"><div class="ev-type ev-support">Supporting</div><div class="ev-text">3/5 contact numbers from same regional office</div></div>
+    <div class="ev-item"><div class="ev-type ev-support">Supporting</div><div class="ev-text">Identical response hours pattern (Mon-Fri 09-18, no weekends)</div></div>
+    <div class="ev-item"><div class="ev-type ev-support">Supporting</div><div class="ev-text">Vendor account creation dates clustered around Nov 15, 2025</div></div>
+    <div style="margin-top:20px;border-top:1px solid #e5e5e0;padding-top:14px">
+      <h3>Quick actions</h3>
+      <div class="btn-sm primary" style="margin-top:10px">Publish case</div>
+      <div class="btn-sm">Save investigation</div>
+      <div class="btn-sm">Export evidence</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

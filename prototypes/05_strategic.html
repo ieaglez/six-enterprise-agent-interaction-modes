@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1280">
+<title>AgentOps — Strategy Configuration</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f0;display:flex;justify-content:center;padding:20px}
+.shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:720px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0}
+.side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
+.side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none}
+.side nav a:hover{background:#f5f5f0}
+.side nav a.act{color:#2563eb;font-weight:500;background:#eff6ff}
+.main{flex:1;display:flex;overflow:hidden}
+.skill-tree{width:240px;border-right:1px solid #e5e5e0;padding:16px;overflow-y:auto}
+.skill-tree h2{font-size:14px;font-weight:500;margin-bottom:12px}
+.sk-name{font-size:12px;padding:6px 8px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.sk-name:hover{background:#f5f5f0}
+.sk-name.sel{background:#eff6ff;font-weight:500;color:#2563eb}
+.sk-name .arrow{font-size:9px;color:#999}
+.sk-child{padding-left:20px}
+.sk-child .sk-name{font-size:11px;color:#888}
+.config{flex:1;padding:24px;overflow-y:auto;background:#fafaf7}
+.config h1{font-size:16px;font-weight:500;margin-bottom:4px}
+.config .path{font-size:11px;color:#999;font-family:'SF Mono',Monaco,monospace;margin-bottom:16px}
+.ver-bar{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:11px;color:#999}
+.ver-badge{background:#f5f5f0;padding:2px 8px;border-radius:4px;font-family:'SF Mono',Monaco,monospace}
+.panel{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:16px;margin-bottom:14px}
+.panel h4{font-size:13px;font-weight:500;margin-bottom:12px}
+.weight-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f0;font-size:12px}
+.weight-row:last-child{border:none}
+.weight-row .name{flex:1}
+.weight-row .old{color:#999;width:40px;text-align:center}
+.weight-row .arr{color:#999;font-size:10px}
+.weight-row .new{width:40px;text-align:center;font-weight:500}
+.weight-row .delta{width:50px;text-align:right;font-size:11px}
+.up{color:#16a34a}.dn{color:#2563eb}
+.slider-track{width:100px;height:4px;background:#f0f0ec;border-radius:2px;position:relative;flex-shrink:0}
+.slider-fill{height:100%;background:#2563eb;border-radius:2px}
+.slider-thumb{width:12px;height:12px;border-radius:50%;background:#2563eb;border:2px solid #fff;position:absolute;top:-4px;box-shadow:0 0 0 1px rgba(0,0,0,0.1)}
+.backtest{background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:16px;margin-bottom:14px}
+.backtest h4{font-size:13px;font-weight:500;margin-bottom:10px;color:#065f46}
+.bt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.bt-stat{text-align:center}
+.bt-stat .val{font-size:20px;font-weight:500;color:#065f46}
+.bt-stat .lbl{font-size:10px;color:#065f46;opacity:0.7}
+.bt-cases{font-size:12px;color:#065f46;line-height:1.6}
+.btn-row{display:flex;gap:8px;margin-top:16px}
+.btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-secondary{background:#fff;color:#1a1a1a;border:1px solid #ddd}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="side">
+    <div class="logo"><div class="icon">⚡</div><div>AgentOps<span class="sub">Enterprise</span></div></div>
+    <nav><a href="#">New thread</a><a href="#">Dashboard</a><a href="#">Cases</a><a class="act" href="#">Skills</a><a href="#">Investigate</a><a href="#">Reports</a><a href="#">Knowledge base</a></nav>
+  </div>
+  <div class="skill-tree">
+    <h2>Skills registry</h2>
+    <div style="margin-bottom:4px"><div class="sk-name"><span class="arrow">▾</span> risk-analysis</div>
+      <div class="sk-child">
+        <div class="sk-name">SKILL.md</div>
+        <div class="sk-name s    signal-detection.md</div>
+        <div class="sk-name">cross-department.md</div>
+        <div class="sk-name"><span class="arrow">▸</span> region-specific/</div>
+      </div>
+    </div>
+    <div style="margin-bottom:4px"><div class="sk-name"><span class="arrow">▸</span> policy-engine</div></div>
+    <div style="margin-bottom:4px"><div class="sk-name"><span class="arrow">▸</span> appeal-handling</div></div>
+    <div style="margin-bottom:4px"><div class="sk-name"><span class="arrow">▸</span> root-cause</div></div>
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid #e5e5e0">
+      <div class="sk-name" style="color:#2563eb;font-weight:500">+ Create new skill</div>
+    </div>
+  </div>
+  a souclass="config">
+    <h1>Signal detection — weight configuration</h1>
+    <div class="path  skills/risk-analysis/signal-detection.md</div>
+    <div class="ver-bar"><span class="ver-badge">v2.2 current</span><span>→</span><span class="ver-badge" style="border:1px solid #2563eb;color:#2563eb">v2.3 draft</span><span style="margin-left:auto">Last modified by Mike Wang on 03/10</span></div>
+    <div class="v>
+           div Signal weights</h4>
+      <div class="weight-row  style="font-size:11px;color:#999;font-weight:500;border-bottom:1px solid #e5e5e0;padding-bottom:6px"><span class="name">Signal type</span><span class="old">Current</span><span class="arr"></span><span class="new">New</span><span style="width:100px"></span><span class="delta">Change</span></div>
+      <div class="weight-row ><span class="name">Transaction volume anomaly</span><span class="old">0.85</span><span class="arr">→</span><span class="new">0.70</span><div class="slider-track"><div class="slider-fill" style="width:70%  </div><div class="slider-thumb" style="left:calc(70% - 6px)"></div></div><span class="delta dn">-0.15 ↓</span></div>
+      <div class="weight-row ><span class="name">Account behavior deviation</span><span class="old">0.80</span><span class="arr">→</span><span class="new">0.80</span><div class="slider-track"><div class="slider-fill" style="width:80%  </div><div class="slider-thumb" style="left:calc(80% - 6px)"></div></div><span class="delta" style="color:#999">—</span></div>
+      <div class="weight-row ><span class="name">Document anomaly detection</span><span class="old">0.75</span><span class="arr">→</span><span class="new">0.75</span><div class="slider-track"><div class="slider-fill" style="width:75%  </div><div class="slider-thumb" style="left:calc(75% - 6px)"></div></div><span class="delta" style="color:#999">—</span></div>
+      <div class="weight-row ><span class="name">Communication pattern spike</span><span class="old">0.30</span><span class="arr">→</span><span class="new" style="color:#2563eb">0.70</span><div class="slider-track"><div class="slider-fill" style="width:70%  </div><div class="slider-thumb" style="left:calc(70% - 6px)"></div></div><span class="delta up">+0.40 ↑</span></div>
+      <div class="weight-row ><span class="name">Cross-department pattern</span><span class="old">0.20</span><span class="arr">→</span><span class="new" style="color:#2563eb">0.65</span><div class="slider-track"><div class="slider-fill" style="width:65%  </div><div class="slider-thumb" style="left:calc(65% - 6px)"></div></div><span class="delta up">+0.45 ↑</span></div>
+      <div class="weight-row ><span class="name">Vendor network clustering</span><span class="old">0.40</span><span class="arr">→</span><span class="new" style="color:#2563eb">0.60</span><div class="slider-track"><div class="slider-fill" style="width:60%  </div><div class="slider-thumb" style="left:calc(60% - 6px)"></div></div><span class="delta up">+0.20 ↑</span></div>
+    </div>
+    <div class="backtest         div ✅ Backtest results (past 30 dayb5</h4>
+      <div class="bt-grid">
+        <div class="bt-stat"><div class="val">+23</div><div class="lbl">New risks found</div></div>
+        <div class="bt-stat"><div class="val">87.4%</div><div class="lbl">Accuracy (was 81.2%)</div></div>
+        <div class="bt-stat"><div class="val">-7</div><div class="lbl">Fewer false positives</div></div>
+      </div>
+      <div class="bt-cases"><b>Sample new detection:</b> Finance department communication spike 200→50,000 messages in 3 dayb, linked to vendor approval chain acceleration, request content pattern matches suspicious signature.</div>
+    </div>
+    <div class="v>
+           div Version history</h4>
+      <div style="font-size:11px;color:#999;line-height:2">
+        <div><b style="color:#1a1a1a">v2.2</b> (03/01) — Mike Wang — Initial signal weights added</div>
+        <div><b style="color:#1a1a1a">v2.1</b> (02/15) — Alex Chen — Adjusted seasonal period thresholds</div>
+        <div><b style="color:#1a1a1a">v2.0</b> (01/20) — Sarah Kim — Major restructure: added cross-source correlation</div>
+        <div><b style="color:#1a1a1a">v1.0</b> (12/01) — System — Initial deployment</div>
+      </div>
+    </div>
+    <div class="btn-row ><div class="btn btn-primary">Publish v2.3</div><div class="btn btn-secondary">Continue editing</div><div class="btn btn-secondary">Discard changes</div></div>
+  </div>
+</div>
+</body>
+</html>

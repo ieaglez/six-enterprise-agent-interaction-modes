@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>AgentOps — Home</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f0;display:flex;justify-content:center;padding:20px}
+.shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:680px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0;background:#fff}
+.side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+.side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
+.side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none;position:relative;transition:background 0.15s}
+.side nav a:hover{background:#f5f5f0}
+.side nav a.act{color:#2563eb;font-weight:500}
+.side nav a .dot{width:6px;height:6px;border-radius:50%;background:#2563eb;position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+.side .sep{height:1px;background:#e5e5e0;margin:12px 16px}
+.side .recent{padding:4px 16px;font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:0.5px}
+.side .ritem{padding:6px 16px;font-size:12px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main{flex:1;padding:28px 36px;overflow-y:auto;background:#fafaf7}
+.risk-banner{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;border:1px solid #2563eb;color:#2563eb;font-size:13px;font-weight:500;margin-bottom:20px;cursor:pointer}
+.risk-banner .count{background:#2563eb;color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
+h1{font-size:22px;font-weight:500;text-align:center;margin-bottom:24px;color:#1a1a1a}
+.chat-box{max-width:600px;margin:0 auto 20px;border:1px solid #e5e5e0;border-radius:12px;padding:16px;background:#fff}
+.chat-box .ph{color:#bbb;font-size:14px;margin-bottom:12px}
+.chat-box .bar{display:flex;align-items:center;justify-content:space-between}
+.chat-box .ask{font-size:12px;color:#888;border:1px solid #e5e5e0;border-radius:6px;padding:4px 10px;display:flex;align-items:center;gap:4px}
+.chat-box .send{width:32px;height:32px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center}
+.chat-box .send svg{width:14px;height:14px;fill:#fff;transform:rotate(45deg)}
+.pills{display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.pill{padding:6px 16px;border-radius:20px;border:1px solid #e5e5e0;font-size:12px;color:#666;background:#fff;cursor:pointer}
+.pill:hover{border-color:#ccc}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.section-head h2{font-size:14px;font-weight:500}
+.section-head .more{font-size:12px;color:#aaa;border:1px solid #e5e5e0;border-radius:6px;padding:3px 10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.stat-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:16px}
+.stat-card .label{font-size:11px;color:#aaa;margin-bottom:6px}
+.stat-card .val{font-size:22px;font-weight:500}
+.stat-card .sub{font-size:11px;margin-top:4px}
+.up{color:#16a34a}.dn{color:#dc2626}
+.task-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border:1px solid #e5e5e0;border-radius:8px;margin-bottom:8px}
+.task-item .check{width:18px;height:18px;border:1.5px solid #ccc;border-radius:4px;flex-shrink:0}
+.task-item .txt{flex:1;font-size:13px}
+.task-item .arr{color:#ccc;font-size:16px}
+.badge{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500}
+.badge-high{background:#fef2f2;color:#991b1b}
+.badge-med{background:#fef9ee;color:#854d0e}
+.badge-wait{background:#f0fdf4;color:#166534}
+.doc-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:14px;cursor:pointer}
+.doc-card:hover{border-color:#ccc}
+.doc-card .icon{width:28px;height:28px;border-radius:6px;background:#eff6ff;display:flex;align-items:center;justify-content:center;color:#2563eb;font-size:12px;font-weight:600;margin-bottom:8px}
+.doc-card .title{font-size:12px;font-weight:500;margin-bottom:6px;line-height:1.4}
+.doc-card .tags{display:flex;gap:4px}
+.doc-card .tag{font-size:10px;padding:2px 6px;background:#f5f5f0;border-radius:4px;color:#888}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="side">
+    <div class="logo">
+      <div class="icon">⚡</div>
+      <div>AgentOps<span class="sub">Enterprise</span></div>
+    </div>
+    <nav>
+      <a class="act" href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3v10"/></svg>
+        New thread
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h10M3 12h6"/></svg>
+        Dashboard<span class="dot"></span>
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="10" height="10" rx="2"/></svg>
+        Cases
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h4v4H3zM9 3h4v4H9zM3 9h4v4H3zM9 9h4v4H9z"/></svg>
+        Skills
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5"/><path d="M12 12l3 3"/></svg>
+        Investigate
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12V6M8 12V4M12 12V8"/></svg>
+        Reports
+      </a>
+      <a href="#">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h8v8H4z"/><path d="M7 4V2M11 4V2"/></svg>
+        Knowledge base
+      </a>
+    </nav>
+    <div class="sep"></div>
+    <div class="recent">Recent</div>
+    <div class="ritem">APAC-Operations Investigation 03/11</div>
+    <div class="ritem">Finance-Compliance Analysis 03/10</div>
+    <div class="ritem">EU-Operations Risk Review 03/09</div>
+    <div class="ritem">Cross-Department Audit 03/08</div>
+  </div>
+  <div class="main">
+    <div style="text-align:center">
+      <span class="risk-banner"><span class="count">3</span> New risks detected →</span>
+    </div>
+    <h1>Let agents handle the details, you lead the way.</h1>
+    <div class="chat-box">
+      <div class="ph">Ask anything for compliance operations</div>
+      <div class="bar">
+        <div class="ask">Ask ▾</div>
+        <div style="display:flex;align-items:center;gap:12px            <dspan style="color:#bbb;font-size:16px  @</span>
+         <dspan style="color:#bbb;font-size:16px  🔗</span>
+         <ddiv class="send"><svg viewBox="0 0 24 24"><path d="M5 12l14-7-7 7 7 7z"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="pills">
+      <span class="pill">Risk Analysis</span>
+      <span class="pill">Policy Engine</span>
+      <span class="pill">Case Review</span>
+      <span class="pill">Root Cause</span>
+      <span class="pill">More</span>
+    </div>
+    <div class="grid3" style="margin-bottom:24px">
+      <div class="stat-card"><div class="l-lab">Violations flagged (24h)</div><div class="val">14</div><div class="sub up">↑ 23% vs yesterday</div></div>
+      <div class="stat-card"><div class="l-lab">Pending approvals</div><div class="val">7</div><div class="sub dn">3 high priority</div></div>
+      <div class="stat-card"><div class="l-lab">Agent accuracy (7d)</div><div class="val">88.7%</div><div class="sub up">↑ 2.5pp vs last week</div></div>
+    </div>
+    <div class="section-head"><h2>Active tasks</h2><div class="more">More</div></div>
+    <div class="task-item"><div class="check"></div><div class="txt">NA-Finance vendor contract review — awaiting adjudication</div><span class="badge badge-high">High</span><span class="arr">→</span></div>
+    <div class="task-item"><div class="check"></div><div class="txt">EU-Operations access control audit — agent investigation in progress</div><span class="badge badge-med">Medium</span><span class="arr">→</span></div>
+    <div class="task-item"><div class="check"></div><div class="txt">Policy update generated, awaiting approval</div><span class="badge badge-wait">Approval</span><span class="arr">→</span></div>
+    <div style="height:16px  </div>
+    <div class="section-head"><h2>Recent documents</h2><div class="more">More</div></div>
+    <div class="grid3">
+      <div class="doc-card"><div class="icon">C</div><div class="title">Compliance Framework Daily Audit Report</div><div class="tags"><span class="tag">Compliance</span><span class="tag">RCA</span></div></div>
+      <div class="doc-card"><div class="icon">O</div><div class="title">Operations Risk Assessment Daily Report</div><div class="tags"><span class="tag">Operations</span><span class="tag">Policy</span></div></div>
+      <div class="doc-card"><div class="icon">S</div><div class="title">Security Monitoring Weekly Summary (W11)</div><div class="tags"><span class="tag">Security</span><span class="tag">Weekly</span></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

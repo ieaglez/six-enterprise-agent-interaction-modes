@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1280">
+<title>AgentOps — Calibrate Agent Judgment</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f0;display:flex;justify-content:center;padding:20px}
+.shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:720px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0}
+.side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
+.side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none}
+.side nav a:hover{background:#f5f5f0}
+.side nav a.act{color:#2563eb;font-weight:500;background:#eff6ff}
+.main{flex:1;padding:24px 28px;overflow-y:auto;background:#fafaf7}
+.breadcrumb{font-size:12px;color:#999;margin-bottom:16px}
+.breadcrumb span{color:#2563eb}
+.top-bar{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.top-bar h1{font-size:16px;font-weight:500}
+.reject-badge{background:#eff6ff;color:#1e40af;font-size:11px;padding:4px 12px;border-radius:6px;font-weight:500}
+.cols{display:flex;gap:20px}
+.col-left{flex:1}.col-right{width:320px}
+.panel{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:16px;margin-bottom:14px}
+.panel h4{font-size:13px;font-weight:500;margin-bottom:12px}
+.orig-case{padding:12px;background:#f5f5f0;border-radius:8px;margin-bottom:12px;font-size:12px;line-height:1.6}
+.orig-case .lbl{color:#999;font-size:11px;margin-bottom:4px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12px;font-weight:500;margin-bottom:6px;color:#666}
+textarea{width:100%;padding:8px 12px;border:1px solid #e5e5e0;border-radius:8px;font-size:12px;min-height:80px;resize:vertical;font-family:inherit;color:#1a1a1a}
+.radio-group{display:flex;flex-direction:column;gap:6px}
+.radio-item{display:flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border:1px solid #e5e5e0;border-radius:8px;cursor:pointer}
+.radio-item.sel{border-color:#2563eb;background:#eff6ff}
+.radio-dot{width:14px;height:14px;border:1.5px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.radio-item.sel .radio-dot{border-color:#2563eb}
+.radio-item.sel .radio-dot::after{content:"";width:6px;height:6px;border-radius:50%;background:#2563eb}
+.check-item{display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0}
+.check-box{width:14px;height:14px;border:1.5px solid #ccc;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.check-box.chk{border-color:#2563eb;background:#2563eb}
+.check-box.chk::after{content:"✓";color:#fff;font-size:9px;font-weight:700}
+.impact-card{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 12px;font-size:11px;color:#854d0e;line-height:1.5;margin-bottom:10px}
+.btn-row{display:flex;gap:8px;margin-top:16px}
+.btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-secondary{background:#fff;color:#1a1a1a;border:1px solid #ddd}
+.flow-step{display:flex;align-items:center;gap:8px;font-size:11px;color:#888;padding:4px 0}
+.flow-step .num{width:18px;height:18px;border-radius:50%;background:#f5f5f0;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;font-weight:500}
+.flow-step.done .num{background:#2563eb;color:#fff}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="side">
+    <div class="logo"><div class="icon">⚡</div><div>AgentOps<span class="sub">Enterprise</span></div></div>
+    <nav><a href="#">New thread</a><a href="#">Dashboard</a><a class="act" href="#">Cases</a><a href="#">Skills</a><a href="#">Investigate</a><a href="#">Reports</a><a href="#">Knowledge base</a></nav>
+  </div>
+  <div class="main">
+    <div class="breadcrumb">Cases → CASE-2026-0312-NA-0923 → <span>Submit feedback</span></div>
+    <div class="top-bar"><h1>Calibrate agent judgment</h1><span class="reject-badge">Rejected — false positive</span></div>
+    <div class="cols">
+      <div class="col-left">
+        <div class="panel">
+          <h4>Original agent assessment</h4>
+          <div class="orig-case"><div class="lbl">Case</div>Finance vendor Acme Corp flagged as "suspicious contract pattern" — transaction volume surged 500% in 48 hours, 98.2% approval rate without exceptions</div>
+          <div class="orig-case"><div class="lbl">Agent rating</div>Medium risk (0.68) — Coordinated contract manipulation</div>
+        </div>
+        <div class="panel">
+          <h4>Misclassification reason</h4>
+          <div class="form-group">
+            <label>Primary reason category</label>
+            <div class="radio-group">
+              <div class="radio-item sel"><div class="radio-dot"></div> Did not consider seasonal business context</div>
+              <div class="radio-item"><div class="radio-dot"></div> Incorrect signal weighting</div>
+              <div class="radio-item"><div class="radio-dot"></div> Wrong rule applied</div>
+              <div class="radio-item"><div class="radio-dot"></div> Incomplete data source</div>
+              <div class="radio-item"><div class="radio-dot"></div> Other</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Detailed explanation</label>
+            <textarea>Acme Corp participated in Q1 corporate purchasing consolidation initiative (Initiative ID: NA-FISCAL-Q1-2026), transaction surge is normal business activity during seasonal vendor consolidation. Agent did not check approved vendor list before analysis.</textarea>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Root cause suggestion</h4>
+          <div class="form-group">
+            <label>Recommended fix</label>
+            <div class="radio-group">
+              <div class="radio-item sel"><div class="radio-dot"></div> Skill gap: add seasonal calendar check to Risk Analysis Agent</div>
+              <div class="radio-item"><div class="radio-dot"></div> Missing tool: need "query_approved_vendor_list" tool</div>
+              <div class="radio-item"><div class="radio-dot"></div> Threshold too sensitive for seasonal periods</div>
+              <div class="radio-item"><div class="radio-dot"></div> No change needed: acceptable false positive rate</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Trigger backtest?</label>
+            <div class="check-item"><div class="check-box chk"></div> Run "seasonal vendor whitelist filter" logic on past 30 days of similar cases</div>
+          </div>
+        </div>
+        <div class="btn-row"><div class="btn btn-primary">Submit feedback</div><div class="btn btn-secondary">Save draft</div></div>
+      </div>
+      <div class="col-rightomplete data source</div>
+              <div 'mpact assessment</h4>
+          <div class="impact-card">If this misclassification had been executed, a compliant vendor would receive an unwarranted compliance warning — damaging vendor relationships and triggering contract review cycles.</div>
+          <div style="font-size:12px;color:#666;line-height:1.8">
+            <div style="margin-bottom:4px"><b>Similar cases found:</b> 8 in past 30 days</div>
+            <div style="margin-bottom:4px"><b>Estimated false positives:</b> 5-6 cases</div>
+            <div><b>Affected vendors:</b> 5-6 compliant partners</div>
+          </div>
+        </div>
+        <div class="v>
+              <div Feedback processing pipeline</h4>
+          <div class="flow-step done"><div class="num">1</div> Mark as false positive in accuracy stats</div>
+          <div class="flow-step done"><div class="num">2</div> Generate Skill optimization ticket</div>
+          <div class="flow-step"><div class="num">3</div> Push to Skill maintenance backlog</div>
+          <div class="flow-step"><div class="num">4</div> Run backtest (if selected)</div>
+          <div class="flow-step"><div class="num">5</div> Update evaluation baseline dataset</div>
+        </div>
+        <div class="v>
+              <div Historical accuracy for this pattern</h4>
+          <div style="font-size:12px;line-height:2">
+            <div style="display:flex;justify-content:space-between"><span style="color:#888">Volume spike + seasonal</span><span style="font-weight:500">72.3%</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:#888">Volume spike + no season</span><span style="font-weight:500">91.7%</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:#888">Vendor network anomaly overall</span><span style="font-weight:500">88.7%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
