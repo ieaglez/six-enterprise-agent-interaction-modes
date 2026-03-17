@@ -9,11 +9,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:720px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
 .side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0}
 .side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
-.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#dc2626,#f97316);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
 .side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
 .side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none}
 .side nav a:hover{background:#f5f5f0}
-.side nav a.act{color:#2563eb;font-weight:500;background:#eff6ff}
+.side nav a.act{color:#dc2626;font-weight:500;background:#fef2f2}
 .main{flex:1;display:flex;overflow:hidden}
 .chat-col{flex:1;display:flex;flex-direction:column}
 .chat-hdr{padding:14px 20px;border-bottom:1px solid #e5e5e0;display:flex;align-items:center;gap:10px}
@@ -23,29 +23,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .msg{display:flex;gap:10px;align-items:flex-start}
 .msg.user{flex-direction:row-reverse}
 .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
-.avatar.u{background:#dbeafe;color:#1e40af}
-.avatar.a{background:#eff6ff;color:#2563eb}
+.avatar.u{background:#fee2e2;color:#991b1b}
+.avatar.a{background:#fef2f2;color:#dc2626}
 .bubble{max-width:80%;font-size:13px;line-height:1.6;background:#fff;border:1px solid #e5e5e0;padding:12px 16px}
 .msg.user .bubble{border-radius:12px 12px 0 12px}
 .msg.agent .bubble{border-radius:12px 12px 12px 0}
-.tool-call{background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:6px 10px;margin:6px 0;font-size:11px;font-family:'SF Mono',Monaco,monospace;color:#1e40af}
+.tool-call{background:#fef2f2;border:1px solid #fca5a5;border-radius:6px;padding:6px 10px;margin:6px 0;font-size:11px;font-family:'SF Mono',Monaco,monospace;color:#991b1b}
 table{width:100%;font-size:11px;border-collapse:collapse;margin:8px 0}
 th{text-align:left;padding:4px 8px;background:#f5f5f0;font-weight:500;font-size:10px;color:#888}
 td{padding:4px 8px;border-bottom:1px solid #f5f5f0}
-tr.hl{background:#eff6ff}
+tr.hl{background:#fef2f2}
 .input-bar{padding:12px 20px;border-top:1px solid #e5e5e0;display:flex;align-items:center;gap:10px;background:#fff}
 .input-bar input{flex:1;border:1px solid #e5e5e0;border-radius:8px;padding:10px 14px;font-size:13px;outline:none;font-family:inherit}
-.send-btn{width:36px;height:36px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.send-btn{width:36px;height:36px;border-radius:50%;background:#dc2626;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .evidence-panel{width:280px;border-left:1px solid #e5e5e0;padding:16px;overflow-y:auto}
 .evidence-panel h3{font-size:13px;font-weight:500;margin-bottom:12px}
 .ev-item{padding:8px 10px;border:1px solid #e5e5e0;border-radius:8px;margin-bottom:8px;font-size:11px;cursor:pointer}
 .ev-item:hover{background:#fafaf7}
 .ev-type{font-size:9px;font-weight:500;padding:1px 6px;border-radius:3px;margin-bottom:4px;display:inline-block}
-.ev-strong{background:#eff6ff;color:#1e40af}
-.ev-support{background:#dbeafe;color:#1e40af}
+.ev-strong{background:#fef2f2;color:#991b1b}
+.ev-support{background:#fee2e2;color:#991b1b}
 .ev-text{color:#888;line-height:1.4;margin-top:4px}
 .btn-sm{display:block;width:100%;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #ddd;background:#fff;color:#1a1a1a;text-align:center;margin-top:6px}
-.btn-sm.primary{background:#2563eb;color:#fff;border:none}
+.btn-sm.primary{background:#dc2626;color:#fff;border:none}
 </style>
 </head>
 <body>
@@ -62,12 +62,12 @@ tr.hl{background:#eff6ff}
         <div class="tool-call">query_vendor_profile × 7 vendors</div>
         Registration comparison:
         <table>
-         <dtr><th>Dimension</th><th>Result</th></tr>
-         <dtr><td>Registered names</td><td>7 different corporate names</td></tr>
-         <dtr class="hl"><td>Contact numbers</td><td>5 unique numbers, 3 share region office</td></tr>
-         <dtr class="hl"><td>License dates</td><td>All within Nov 1-8, 2025</td></tr>
-         <dtr class="hl"><td>Vendor created</td><td>All around Nov 15, 2025</td></tr>
-         <dtr><td>Bank accounts</td><td>Requires Finance Team access</td></tr>
+          <tr><th>Dimension</th><th>Result</th></tr>
+          <tr><td>Registered names</td><td>7 different corporate names</td></tr>
+          <tr class="hl"><td>Contact numbers</td><td>5 unique numbers, 3 share region office</td></tr>
+          <tr class="hl"><td>License dates</td><td>All within Nov 1-8, 2025</td></tr>
+          <tr class="hl"><td>Vendor created</td><td>All around Nov 15, 2025</td></tr>
+          <tr><td>Bank accounts</td><td>Requires Finance Team access</td></tr>
         </table>
         Registration dates are clustered. Three phone numbers share same region office — possible coordination signal.
       </div></div>
@@ -75,10 +75,10 @@ tr.hl{background:#eff6ff}
       <div class="msg agent"><div class="avatar a">⚡</div><div class="bubble">
         <div class="tool-call">analyze_communication_patterns</div>
         <table>
-         <dtr><th>Metric</th><th>5 vendors (cluster A)</th><th>2 vendors (cluster B)</th></tr>
-         <dtr class="hl"><td>Language similarity</td><td>Cosine 0.87</td><td>Cosine 0.31</td></tr>
-         <dtr class="hl"><td>Response hours</td><td>Mon-Fri 09:00-18:00</td><td>Variable</td></tr>
-         <dtr><td>Weekend activity</td><td>Zero responses</td><td>Active</td></tr>
+          <tr><th>Metric</th><th>5 vendors (cluster A)</th><th>2 vendors (cluster B)</th></tr>
+          <tr class="hl"><td>Language similarity</td><td>Cosine 0.87</td><td>Cosine 0.31</td></tr>
+          <tr class="hl"><td>Response hours</td><td>Mon-Fri 09:00-18:00</td><td>Variable</td></tr>
+          <tr><td>Weekend activity</td><td>Zero responses</td><td>Active</td></tr>
         </table>
         5 of 7 vendors show nearly identical communication patterns. The remaining 2 appear independently operated. The 5-vendor cluster provides strong evidence of unified control.
       </div></div>

@@ -9,11 +9,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .shell{display:flex;color:#1a1a1a;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;min-height:780px;width:1200px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
 .side{width:220px;border-right:1px solid #e5e5e0;padding:16px 0;flex-shrink:0}
 .side .logo{padding:0 16px 20px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px}
-.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.side .logo .icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#dc2626,#f97316);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
 .side .logo .sub{font-size:10px;font-weight:400;color:#888;display:block;margin-top:1px}
 .side nav a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:#666;text-decoration:none}
 .side nav a:hover{background:#f5f5f0}
-.side nav a.act{color:#2563eb;font-weight:500;background:#eff6ff}
+.side nav a.act{color:#dc2626;font-weight:500;background:#fef2f2}
 .main{flex:1;padding:24px 28px;overflow-y:auto;background:#fafaf7}
 .rpt-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .rpt-hdr h1{font-size:18px;font-weight:500}
@@ -23,7 +23,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .mini-stat .l{font-size:10px;color:#999;margin-bottom:4px}
 .mini-stat .v{font-size:20px;font-weight:500}
 .mini-stat .d{font-size:10px;margin-top:3px}
-.up{color:#16a34a}.dn{color:#2563eb}
+.up{color:#16a34a}.dn{color:#dc2626}
 .row{display:flex;gap:12px;margin-bottom:14px}
 .panel{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:16px;flex:1}
 .panel h4{font-size:13px;font-weight:500;margin-bottom:12px}
@@ -43,7 +43,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .sk-item .sk-name{font-weight:500;margin-bottom:4px;font-size:12px}
 .sk-item .sk-detail{color:#888;line-height:1.5}
 .sk-badge{font-size:9px;padding:1px 6px;border-radius:3px;font-weight:500}
-.sk-good{background:#f0fdf4;color:#166534}.sk-warn{background:#fef9ee;color:#854d0e}.sk-bad{background:#eff6ff;color:#1e40af}
+.sk-good{background:#f0fdf4;color:#166534}.sk-warn{background:#fef9ee;color:#854d0e}.sk-bad{background:#fef2f2;color:#991b1b}
 .cost-item{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f5f5f0;font-size:12px}
 .cost-item:last-child{border:none}
 .cost-item .cl{color:#888}
@@ -55,9 +55,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .status-open{color:#854d0e}.status-done{color:#166534}
 .chart-area{position:relative;height:120px;margin:8px 0;border-left:1px solid #e5e5e0}
 .chart-col{position:absolute;bottom:0;width:28px;display:flex;flex-direction:column;align-items:stretch}
-.chart-col .seg-auto{background:#2563eb;border-radius:4px 4px 0 0}
-.chart-col .seg-human{background:#93c5fd;border-radius:4px 4px 0 0}
-.chart-l-labs{display:flex;justify-content:space-around;font-size:9px;color:#999;margin-top:4px;padding-left:10px}
+.chart-col .seg-auto{background:#dc2626;border-radius:4px 4px 0 0}
+.chart-col .seg-human{background:#fca5a5;border-radius:4px 4px 0 0}
+.chart-labels{display:flex;justify-content:space-around;font-size:9px;color:#999;margin-top:4px;padding-left:10px}
 </style>
 </head>
 <body>
@@ -75,65 +75,67 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="mini-stat"><div class="l">Avg decision time</div><div class="v">2.3h</div><div class="d up">↓ from 3.1h</div></div>
     </div>
     <div class="row">
-      <div class="v>
-             div Accuracy by violation type</h4>
+      <div class="panel">
+        <h4>Accuracy by violation type</h4>
         <div class="acc-row"><span class="name">Contract violations</span><div class="bar-bg"><div class="bar-fill" style="width:92%;background:#16a34a"></div></div><span class="val">92.1%</span><span class="delta" style="color:#999">stable</span></div>
-        a source</diacc-row"><span class="name">Expense fraud</span><div class="bar-bg"><div class="bar-fill" style="width:85%;background:#16a34a"></div></div><span class="val">85.3%</span><span class="delta up">↑ 4.3pp</span></div>
-        a source</diacc-row"><span class="name">Policy evasion</span><div class="bar-bg"><div class="bar-fill" style="width:80%;background:#f59e0b"></div></div><span class="val">79.8%</span><span class="delta dn">↓ 3.7pp</span></div>
-        a source</diacc-row"><span class="name">Vendor compliance</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:#16a34a"></div></div><span class="val">90.0%</span><span class="delta up">↑ 1.2pp</span></div>
-        a source</diacc-row"><span class="name">Access anomaly</span><div class="bar-bg"><div class="bar-fill" style="width:83%;background:#16a34a"></div></div><span class="val">83.2%</span><span class="delta" style="color:#999">new</span></div>
+        <div class="acc-row"><span class="name">Expense fraud</span><div class="bar-bg"><div class="bar-fill" style="width:85%;background:#16a34a"></div></div><span class="val">85.3%</span><span class="delta up">↑ 4.3pp</span></div>
+        <div class="acc-row"><span class="name">Policy evasion</span><div class="bar-bg"><div class="bar-fill" style="width:80%;background:#f59e0b"></div></div><span class="val">79.8%</span><span class="delta dn">↓ 3.7pp</span></div>
+        <div class="acc-row"><span class="name">Vendor compliance</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:#16a34a"></div></div><span class="val">90.0%</span><span class="delta up">↑ 1.2pp</span></div>
+        <div class="acc-row"><span class="name">Access anomaly</span><div class="bar-bg"><div class="bar-fill" style="width:83%;background:#16a34a"></div></div><span class="val">83.2%</span><span class="delta" style="color:#999">new</span></div>
       </div>
-      <div class="v>
-             div Case volume by day</h4>
-        <div class="chart-area            <ddiv class="chart-col" style="left:20px"><div class="seg-human" style="height:12px  </div><div class="seg-auto" style="height:68px  </div></div>
-         <ddiv class="chart-col" style="left:60px"><div class="seg-human" style="height:16px  </div><div class="seg-auto" style="height:76px  </div></div>
-         <ddiv class="chart-col" style="left:100px"><div class="seg-human" style="height:10px  </div><div class="seg-auto" style="height:55px  </div></div>
-         <ddiv class="chart-col" style="left:140px"><div class="seg-human" style="height:20px  </div><div class="seg-auto" style="height:82px  </div></div>
-         <ddiv class="chart-col" style="left:180px"><div class="seg-human" style="height:14px  </div><div class="seg-auto" style="height:70px  </div></div>
-         <ddiv class="chart-col" style="left:220px"><div class="seg-human" style="height:8px  </div><div class="seg-auto" style="height:45px  </div></div>
-         <ddiv class="chart-col" style="left:260px"><div class="seg-human" style="height:6px  </div><div class="seg-auto" style="height:36px  </div></div>
+      <div class="panel">
+        <h4>Case volume by day</h4>
+        <div class="chart-area">
+          <div class="chart-col" style="left:20px"><div class="seg-human" style="height:12px"></div><div class="seg-auto" style="height:68px"></div></div>
+          <div class="chart-col" style="left:60px"><div class="seg-human" style="height:16px"></div><div class="seg-auto" style="height:76px"></div></div>
+          <div class="chart-col" style="left:100px"><div class="seg-human" style="height:10px"></div><div class="seg-auto" style="height:55px"></div></div>
+          <div class="chart-col" style="left:140px"><div class="seg-human" style="height:20px"></div><div class="seg-auto" style="height:82px"></div></div>
+          <div class="chart-col" style="left:180px"><div class="seg-human" style="height:14px"></div><div class="seg-auto" style="height:70px"></div></div>
+          <div class="chart-col" style="left:220px"><div class="seg-human" style="height:8px"></div><div class="seg-auto" style="height:45px"></div></div>
+          <div class="chart-col" style="left:260px"><div class="seg-human" style="height:6px"></div><div class="seg-auto" style="height:36px"></div></div>
         </div>
-        a source</dichart-l-labs"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
-        a soustyle="display:flex;gap:12px;margin-top:8px;font-size:10px;color:#999            <dspan><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#2563eb;vertical-align:middle"></span> Auto-resolved</span>
-         <dspan><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#93c5fd;vertical-align:middle"></span> Human reviewed</span>
+        <div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:#999">
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#dc2626;vertical-align:middle"></span> Auto-resolved</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#fca5a5;vertical-align:middle"></span> Human reviewed</span>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="v>
-             div Human correction breakdown (28 total)</h4>
+      <div class="panel">
+        <h4>Human correction breakdown (28 total)</h4>
         <div class="fb-row"><span class="reason">Seasonal context missed</span><span class="count">8</span><span class="pct">28.6%</span></div>
-        a source</difb-row"><span class="reason">New violation pattern unrecognized</span><span class="count">5</span><span class="pct">17.9%</span></div>
-        a source</difb-row"><span class="reason">Cross-department signal missed</span><span class="count">4</span><span class="pct">14.3%</span></div>
-        a source</difb-row"><span class="reason">Recidivist weight undervalued</span><span class="count">4</span><span class="pct">14.3%</span></div>
-        a source</difb-row"><span class="reason">Risk calibration (not wrong, off)</span><span class="count">4</span><span class="pct">14.3%</span></div>
-        a source</difb-row"><span class="reason">Other</span><span class="count">3</span><span class="pct">10.7%</span></div>
+        <div class="fb-row"><span class="reason">New violation pattern unrecognized</span><span class="count">5</span><span class="pct">17.9%</span></div>
+        <div class="fb-row"><span class="reason">Cross-department signal missed</span><span class="count">4</span><span class="pct">14.3%</span></div>
+        <div class="fb-row"><span class="reason">Recidivist weight undervalued</span><span class="count">4</span><span class="pct">14.3%</span></div>
+        <div class="fb-row"><span class="reason">Risk calibration (not wrong, off)</span><span class="count">4</span><span class="pct">14.3%</span></div>
+        <div class="fb-row"><span class="reason">Other</span><span class="count">3</span><span class="pct">10.7%</span></div>
       </div>
-      <div class="v>
-             div Skill health</h4>
+      <div class="panel">
+        <h4>Skill health</h4>
         <div class="sk-item"><div style="display:flex;justify-content:space-between;align-items:center"><span class="sk-name">signal-detection.md v2.3</span><span class="sk-badge sk-good">Healthy</span></div><div class="sk-detail">Expense fraud accuracy +4.3pp after weight update. Communication pattern detection improved.</div></div>
         <div class="sk-item"><div style="display:flex;justify-content:space-between;align-items:center"><span class="sk-name">cross-department.md v1.2</span><span class="sk-badge sk-warn">Needs attention</span></div><div class="sk-detail">Policy evasion accuracy dropped 3.7pp. 3 false negatives in remote work scenarios.</div></div>
         <div class="sk-item"><div style="display:flex;justify-content:space-between;align-items:center"><span class="sk-name">vendor-compliance.md v1.0</span><span class="sk-badge sk-bad">Action needed</span></div><div class="sk-detail">2 missed detections: Third-party intermediary network pattern not covered.</div></div>
       </div>
     </div>
     <div class="row">
-      <div class="v>
-    style="flex:1.5">         div Action items from this review</h4>
+      <div class="panel" style="flex:1.5">
+        <h4>Action items from this review</h4>
         <div class="ai-item"><span class="owner">Sarah Kim</span><span class="desc">Investigate policy evasion accuracy decline — root cause analysis</span><span class="status status-open">Open</span></div>
-        a souclass="ai-item"><span class="owner">Policy</span><span class="desc">Add third-party intermediary pattern to vendor-compliance.md skill</span><span class="status status-open">Open</span></div>
-        a souclass="ai-item"><span class="owner">Mike Wang</span><span class="desc">Create remote-operations.md sub-skill for distributed team scenarios</span><span class="status status-open">Open</span></div>
-        a souclass="ai-item"><span class="owner">Alex Chen</span><span class="desc">Review seasonal adjustment Skill update — backtest results ready</span><span class="status status-done">Done</span></div>
+        <div class="ai-item"><span class="owner">Policy</span><span class="desc">Add third-party intermediary pattern to vendor-compliance.md skill</span><span class="status status-open">Open</span></div>
+        <div class="ai-item"><span class="owner">Mike Wang</span><span class="desc">Create remote-operations.md sub-skill for distributed team scenarios</span><span class="status status-open">Open</span></div>
+        <div class="ai-item"><span class="owner">Alex Chen</span><span class="desc">Review seasonal adjustment Skill update — backtest results ready</span><span class="status status-done">Done</span></div>
       </div>
-      <div class="v>
-             div Cost breakdown</h4>
-        <div class="cost-item"><span class="c   Total tokens</span><span class="cv">4.2M</span></div>
-        a souclass="cost-item"><span class="c   Total cost</span><span class="cv">$126</span></div>
-        a souclass="cost-item"><span class="c   Risk Analysis</span><span class="cv">3.1M (73.8%)</span></div>
-        a souclass="cost-item"><span class="c   Policy Engine</span><span class="cv">0.7M (16.7%)</span></div>
-        a souclass="cost-item"><span class="c   Other agents</span><span class="cv">0.4M (9.5%)</span></div>
-        a souclass="cost-item"><span class="c   Avg cost/case</span><span class="cv">$0.51</span></div>
-        a souclass="cost-item"><span class="c   Most expensive</span><span class="cv">$2.67</span></div>
-        a souclass="cost-item"><span class="c   vs last week</span><span class="cv up">↓ 8%</span></div>
+      <div class="panel">
+        <h4>Cost breakdown</h4>
+        <div class="cost-item"><span class="cl">Total tokens</span><span class="cv">4.2M</span></div>
+        <div class="cost-item"><span class="cl">Total cost</span><span class="cv">$126</span></div>
+        <div class="cost-item"><span class="cl">Risk Analysis</span><span class="cv">3.1M (73.8%)</span></div>
+        <div class="cost-item"><span class="cl">Policy Engine</span><span class="cv">0.7M (16.7%)</span></div>
+        <div class="cost-item"><span class="cl">Other agents</span><span class="cv">0.4M (9.5%)</span></div>
+        <div class="cost-item"><span class="cl">Avg cost/case</span><span class="cv">$0.51</span></div>
+        <div class="cost-item"><span class="cl">Most expensive</span><span class="cv">$2.67</span></div>
+        <div class="cost-item"><span class="cl">vs last week</span><span class="cv up">↓ 8%</span></div>
       </div>
     </div>
   </div>
